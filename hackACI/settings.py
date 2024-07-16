@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
 import os
+import logging
 
 #load the variables from the .env file 
 load_dotenv(find_dotenv())
@@ -25,13 +26,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG")
+debugEnv = os.getenv("DEBUG")
+if debugEnv == "True":
+    DEBUG = True
+elif debugEnv == "False":
+    DEBUG = False
+else:
+    logging.warn("DEBUG value has not been set in an .env file!")
+    logging.warn("DEBUG sent to false as default.")
+    DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["*"]
+if not DEBUG and ALLOWED_HOSTS == "*":
+    logging.warn("ALLOWED_HOSTS set to '*'. Only use in development, unsecure!")
 
 # Application definition
 
@@ -120,10 +130,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static/'
+    os.path.join(BASE_DIR, 'static/')
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
