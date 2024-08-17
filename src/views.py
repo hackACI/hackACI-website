@@ -1,22 +1,28 @@
 from django.views.generic import TemplateView
-# Create your views here.
+from src.mixins import CommonContextMixin
 
-class IndexView(TemplateView):
+class IndexView(CommonContextMixin, TemplateView):
     template_name = "home.html"
     name = "Home"
-    documentTitle = "hackACI" # root will be hackACI
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["documentTitle"] = self.documentTitle
-        return context
+class SearchView(CommonContextMixin, TemplateView):
+    template_name = "search.html"
+    name = "Search"
+    ignoreRender = True #ignores rendering for header + footer
 
-class AboutView(TemplateView):
+class AboutView(CommonContextMixin, TemplateView):
     template_name = "about.html"
     name = "About Us"
-    documentTitle = "hackACI - About"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["documentTitle"] = self.documentTitle
-        return context
+class EventView(CommonContextMixin, TemplateView):
+    template_name = "events.html"
+    name = "Events"
+
+class LoginView(CommonContextMixin, TemplateView):
+    template_name = "login.html"
+    name = "Login"
+
+class RegisterView(CommonContextMixin, TemplateView):
+    template_name = "register.html"
+    name = "Register"
+    ignoreRender = True

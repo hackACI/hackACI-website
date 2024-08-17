@@ -3,41 +3,30 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login</title>
+        <title>{{ documentTitle }}</title>
         <link rel="stylesheet" href="static/loginStyle.css">
         <link rel="icon" href="static/hacklogo.png" type="png">
     </head>
     <body>
-        <div class="banner">
-            <div class="navbar">
-                <img src="static/hacklogo.png" class="logo">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/#aboutus">About Us</a></li>
-                    <li><a href="/register">Register</a></li>
-                    <li><a href="#">Application</a></li>
-                </ul>
-            </div>
-            <div class="form-box">
-                <h1>Login</h1>
-                <form method="post">
-                    <div class="input-group">
-                        <div class="input-field">
-                            <input type="email" name="email" placeholder="Email" required maxlength="75">
-                        </div>
+        <div class="form-box">
+            <h1>Login</h1>
+            <form method="post">
+                <div class="input-group">
+                    <div class="input-field">
+                        <input type="email" name="email" placeholder="Email" required maxlength="75">
+                    </div>
 
-                        <div class="input-field">
-                            <input id="pass" type="password" name="pass" placeholder="Password" maxlength="75" required>
-                        </div>
-                    <p>Login to view application</p>
+                    <div class="input-field">
+                        <input id="pass" type="password" name="pass" placeholder="Password" maxlength="75" required>
                     </div>
-                    <div class="btn-field">
-                        <a href="#">
-                        <button class="regbut" type="submit">Login</button>
-                        </a>
-                    </div>
-                </form>
-            </div>
+                    <p>Login to apply! If you don't have an account, <a href={% url 'Register' %}>register here.<a/></p>
+                </div>
+                <div class="btn-field">
+                    <a href="#">
+                    <button class="regbut" type="submit">Login</button>
+                    </a>
+                </div>
+            </form>
         </div>
     </body>
 </html>

@@ -1,0 +1,11 @@
+{% block footer %}
+    <footer>
+        <div class="footer-container">
+            <ul class="link-list">
+                {% for url_name in url_list %}
+                    <li><a href="{% url url_name %}">{{ url_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </footer>
+{% endblock %}

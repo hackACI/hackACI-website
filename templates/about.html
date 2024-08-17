@@ -1,13 +1,222 @@
-{ load static }
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ documentTitle }}</title>
-        <link href="css/style.css" rel="stylesheet">
+        <link href="{% static 'css/main.css' %}" rel="stylesheet">
     </head>
     <body>
+        {% block header %}
+            {% include "header.html" %}
+        {% endblock %}
+        <main>
+            <section>
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <h1>About <a href="{% url 'Home' %}"><span class="span-title">hAckCI</span></a></h1>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <article class="about-us">
+                    <div class="text-container">
+                        <div class="title-text">
+                            <h1>About Us</h1>
+                        </div>
+                        <div class="para-text">
+                            <p>HackACI was founded by a group of high school students attending Agincourt CI. <br> Our mission is to create a community where talented people can connect, share, and develop their creative skills to a new level.
+                                You will present your amazing project to the judges where you are able to compete for prizes.
+                            Form a team and build a project from start to finish! HackACI is for everyone, and you do not need to come from a technical background.
+                                Join 50+ high school hackers on a journey to make your projects come to life. We will provide you with workshops, ideas and support you on your journey of creativity.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <section>
+                <article class="what-we-do">
+                    <div class="text-container">
+                        <div class="title-text">
+                            <h2>What does hackACI do?</h2>
+                        </div>
+                        <div class="para-text">
+                            <p>We create and manage <a href="{% url 'Events' %}">events</a> that highlight creativity and encourage new ideas to come to light in many ways. Our last event was ACI's first ever hackathon, and we plan to have new events in the future.</p>
+                            <img src="{% static "images/bluecave.png" %}" alt="events image">
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <section>
+                <article class="our-values">
+                    <div class="text-container">
+                        <div class="title-text">
+                            <h3>Our Values</h3>
+                            <p>Here at hackACI, we take pride in upholding our values, which include:</p>
+                        </div>
+                        <div class="list-container">
+                            <ul>
+                                <li>
+                                    <h5>Innovation <ion-icon name="bulb-outline"></ion-icon></h5>
+                                    <p>We prioritize creativity and encourage out-of-the-box thinking to solve complex problems and create efficient solutions.</p>
+                                </li>
+                                <li>
+                                    <h5>Integrity <ion-icon name="book-outline"></ion-icon></h5>
+                                    <p>We operate with honesty and transparency in all our actions.</p>
+                                </li>
+                                <li>
+                                    <h5>Inclusivity <ion-icon name="people-outline"></ion-icon></h5>
+                                    <p>We embrace diversity and strive to create a safe and inclusive environment where everyone is valued with equal opportunities to contribute and grow.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <section>
+                <article class="faq">
+                    <div class="text-container">
+                        <h1 class="faq-title">Frequently Asked Questions</h1>
+                        <div class="questions">
+                            <details class="question-1">
+                                <summary> How to apply?
+                                </summary>
+                                <div class="faq-dropdown-content">
+                                    lorem ipsum dolor sit amet, consteuctur adpiscing elit.
+                                </div>
+                            </details>
+                            <details class="question-2">
+                                <summary> How to apply?
+                                </summary>
+                                <div class="faq-dropdown-content">
+                                    lorem ipsum dolor sit amet, consteuctur adpiscing elit.
+                                </div>
+                            </details>
+                            <details class="question-3">
+                                <summary> How to apply?
+                                </summary>
+                                <div class="faq-dropdown-content">
+                                    lorem ipsum dolor sit amet, consteuctur adpiscing elit.
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <section>
+                <article>
+                    <div class="home-container">
+                        <div class="profile-card">
+                            <div class="img">
+                                <img src="{% static '/images/profile-images/cim.png' %}">
+                            </div>
+                            <div class="caption">
+                                <h3>Cimmaji Manoranjan</h3>
+                                <p>Organizer</p>
+                                <div class="social-links">
 
+                                    <a href="https://discord.com/users/666017736337653782"><i class="fa-brands fa-discord"></i></a>
+                                    <a href="mailto:cimmaji.manoranjan@student.tdsb.on.ca"><i class="fa-solid fa-envelope"></i></a>
+                                    <a href="https://www.instagram.com/cim_galaxy/"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/cimmaji-manoranjan-269421304/"><i class="fa-brands fa-linkedin"></i></a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="img">
+                                <img src="{% static '/images/profile-images/amy.jpg' %}">
+                            </div>
+                            <div class="caption">
+                                <h3>Amy Zhang</h3>
+                                <p>Secretary/Outreach</p>
+                                <div class="social-links">
+                                <a href="https://discord.com/users/558051194044678177"><i class="fa-brands fa-discord"></i></a>
+                                <a href="mailto:amy.zhang8@student.tdsb.on.ca"><i class="fa-solid fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="img">
+                                <img src="{% static '/images/profile-images/rose.png' %}">
+                            </div>
+                            <div class="caption">
+                                <h3>Rose Zheng</h3>
+                                <p>Logistics</p>
+                                <div class="social-links">
+                                    <a href="https://discord.com/users/#"><i class="fa-brands fa-discord"></i></a>
+                                    <a href="mailto:rose.zheng@student.tdsb.on.ca"><i class="fa-solid fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="img">
+                                <img src="{% static '/images/profile-images/jackson.jpg' %}">
+                            </div>
+                            <div class="caption">
+                                <h3>Jackson Cai</h3>
+                                <p>Front/Back End Developer</p>
+                                <div class="social-links">
+                                    <!-- modify social links in a editable file -->
+                                    <a href="https://discord.com/users/678058588278751252"><i class="fa-brands fa-discord"></i></a>
+                                    <a href="mailto:jackson.cai2@student.tdsb.on.ca"><i class="fa-solid fa-envelope"></i></a>
+                                    <a href="https://www.instagram.com/ohqrizon?igsh=Nzd5NmppbXYzcTU1"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/jackson-cai/"><i class="fa-brands fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="img">
+                                <img src="{% static '/images/profile-images/james.jpg' %}">
+                            </div>
+                            <div class="caption">
+                                <h3>James Cai</h3>
+                                <p>Front End Developer</p>
+                                <div class="social-links">
+                                    <a href="https://discord.com/users/542081852609921034"><i class="fa-brands fa-discord"></i></a>
+                                    <a href="mailto:james.cai4@student.tdsb.on.ca"><i class="fa-solid fa-envelope"></i></a>
+                                    <a href="https://www.instagram.com/dr.jams_?igsh=aDJhb25tYXV3ZjNo"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/cai-james/"><i class="fa-brands fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="img">
+                                <img src="{% static '/images/profile-images/elk.jpg' %}">
+                            </div>
+                            <div class="caption">
+                                <h3>Elakkiyan Rasakumar</h3>
+                                <p>Communications</p>
+                                <div class="social-links">
+                                    <a href="https://discord.com/users/272756741563875329"><i class="fa-brands fa-discord"></i></a>
+                                    <a href="mailto:elakkiyan.rasakumar@student.tdsb.on.ca"><i class="fa-solid fa-envelope"></i></a>
+                                    <a href="https://www.instagram.com/elakkiyan.r?igsh=MWZodmQ5bWJmOWtweQ=="><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/elakkiyan-rasakumar-39181a237/"><i class="fa-brands fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="img">
+                                <img src="{% static '/images/profile-images/koby.png' %}">
+                            </div>
+                            <div class="caption">
+                                <h3>Koby Dong</h3>
+                                <p>Marketing</p>
+                                <div class="social-links">
+                                    <a href="https://discord.com/users/506931241459646492"><i class="fa-brands fa-discord"></i></a>
+                                    <a href="mailto:koby.dong@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                                    <a href="https://www.linkedin.com/in/koby-dong-849018296/"><i class="fa-brands fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+        {% block footer %}
+            {% include "footer.html" %}
+        {% endblock %}
+        <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.js"></script>
     </body>
 </html>

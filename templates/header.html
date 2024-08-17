@@ -1,0 +1,38 @@
+{% load static %}
+{% block header %}
+<head>
+    <link href="{% static 'css/header.css'%}" rel="stylesheet">
+</head>
+<header>
+    <div class="header-container">
+        <ul class="link-list">
+            <a style="background: none;" href={% url 'Home' %}><img src="{% static 'images/hacklogo.png' %}" alt="hackACI logo" class="logo"></a>
+            {% for url_name in url_list %}
+                <li><a href="{% url url_name %}">{{ url_name }}</a></li>
+            {% endfor %}
+            <a class="search-icon" href={% url 'Search' %}>
+                <ion-icon name="search" style="font-size: 30px;"></ion-icon>
+            </a>
+        </ul>
+        <div class="menu-icon">
+            <div class="dropdown-menu">
+                <svg width="60" height="60" viewBox="0 0 100 100">
+                  <path class="line top" d="M 20,30 H 80"/>
+                  <path class="line middle" d="M 20,50 H 80" />
+                  <path class="line bottom" d="M 20,70 H 80"/>
+                </svg>
+                <div class="dropdown">
+                    {% for url_name in url_list %}
+                        <li><a href="{% url url_name %}">{{ url_name }}</a></li>
+                    {% endfor %}
+                </div>
+            </div>
+            <a href={% url 'Home' %}><img src="{% static 'images/hacklogo.png' %}" alt="hackACI logo" class="logo"></a>
+            <a class="event-btn" href={% url 'Events' %}>Events</a>
+        </div>
+    </div>
+    <script defer src={% static 'js/header.js' %}></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</header>
+{% endblock %}
