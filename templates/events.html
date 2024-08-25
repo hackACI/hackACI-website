@@ -1,12 +1,84 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ documentTitle }}</title>
-        <link href="css/style.css" rel="stylesheet">
+        <link href="{% static '/css/events.css'%}" rel="stylesheet">
+        <link href="{% static '/css/base.css'%}" rel="stylesheet">
     </head>
     <body>
-        EVENTS page here.
+        {% block header %}
+            {% include "header.html" %}
+        {% endblock %}
+        <main>
+            <section>
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <h1><a href="{% url 'Events' %}">Events</a></h1>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <article>
+                    <div class="current-events-container">
+                        <div class="current-events-title">
+                            <h2>Current Events</h2>
+                        </div>
+                        <div class="current-events-text">
+                            {% if current_events %}
+                                <ul>
+                                {% for event in current_events %}
+                                    <h3>{{ event.title }}</h3>
+                                    <li>{{ event.date }}</li>
+                                    {% if event.image %}
+                                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                                    {% endif %}
+                                    <p>{{ event.description }}</p>
+                                {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>No current events available.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+            </section> 
+            <section>
+            <section>
+                <article>
+                    <div class="old-events-container">
+                        <div class="old-events-title">
+                            <h2>Old Events</h2>
+                        </div>
+                        <div class="current-events-text">
+                            {% if old_events %}
+                                <ul>
+                                {% for event in old_events %}
+                                    <h3>{{ event.title }}</h3>
+                                    <li>{{ event.date }}</li>
+                                    {% if event.image %}
+                                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                                    {% endif %}
+                                    <p>{{ event.description }}</p>
+                                {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>No old events available.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+            </section> 
+                <article>
+                    <div class="calendar-container">
+                    </div>
+                </article>
+            </section>
+        </main>
+        {% block footer %}
+            {% include "footer.html" %}
+        {% endblock %}
     </body>
 </html>

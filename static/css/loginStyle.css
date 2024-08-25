@@ -1,76 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-.banner{
-    width: 100%;
-    height: 740px;
-    background-image: linear-gradient(rgba(8, 33, 46, 0.9),rgba(69, 125, 186,0.2)), url(loginBackground.jpg);
-    background-size: cover;
-    background-position: 50% 20%;
-}
-.navbar{
-    width: 85%;
-    margin: auto;
-    padding: 35px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.logo{
-    width: 120px;
-    cursor: pointer;
-    margin: -5x;
-    transform: translateY(-5%);
-
-}
-.navbar ul li{
-    transform: translateX(35%);
-    font-size: 20px;
-    list-style: none;
-    display: inline-block;
-    margin: 0 25px;
-    position: relative;
-}
-.navbar ul li a{
-    text-decoration: none;
-    padding: 6px 15px;
-    color: #fff;
-    border-radius: 30px;
-}
-.navbar ul li a:hover{
-    background: #fff;
-    color: #2b1055;
-    transition: 0.3s;
-}
-
-.content{
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    color: #fff;
-}
-
 .form-box{
-    width: 90%;
-    height: 60%;
-    max-width: 425px;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -80%);
-    background: #d9e0fc;
-    border-radius: 20px;
-    padding: 50px 60px 50px;
-    text-align: center;
-    animation: fadeInAnimation ease 0.5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+  max-height: 60%;
+  background: var(--bg-color); 
+  padding: 3em;
+  animation: fadeInAnimation ease 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes fadeInAnimation {
@@ -86,18 +24,20 @@
     font-size: 30px;
     margin-bottom: 60px;
     position: relative;
-    color: #2C4280;
+    color: var(--real-white); 
 }
 .form-box h1::after{
-    content: '';
-    width: 40px;
-    height: 4px;
-    border-radius: 3px;
-    background: #2C4280;
-    position: absolute;
-    bottom: -20px;
-    right: 110px;
-    transform: translateX(-50%);
+  content: '';
+  width: 100%;
+  height: 4px;
+  border-radius: 3px;
+  background: var(--real-white);
+  position: absolute;
+  top: 1;
+  bottom: -5px;
+  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .input-field{
@@ -116,29 +56,29 @@ input{
     border: 0;
     outline: 0;
     padding: 18px 15px;
+
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
 }
 
 form p{
-    text-align: left;
-    font-size: 15px;
-}
-form p a{
-    text-decoration: none;
-    color: #10107a;
+  text-align: center;
+  font-size: 15px;
+  color: var(--real-white);
+  padding: 1em;
 }
 
-.btn-field{
-    width: 100%;
-    display: flex;
-    transform: translate(72.5px, -60px);
-
-
-}
 
 .regbut{
     padding: 10px 60px;
     flex-basis: 48%;
-    background: #2C4280;
+    background: var(--dark-p-bg);
     color: #fff;
     height: 45px;
     border-radius: 20px;
@@ -154,12 +94,83 @@ form p a{
     transform: scale(1.2);
 
 }
-.input-group{
-    height: 260px;
-}
 
 .btn-field button.disable{
     background: #d3d8e0;
     color: #555;
 }
+.register-link{
+  opacity: 0.8;
+  color: var(--dark-p-bg);
+  text-decoration: none;
+  transition: .3s ease-in-out;
+  position: relative;
+}
+.register-link:hover{
+  opacity: 1;
+  cursor: pointer;
+}
 
+.register-link::after{
+  content: '';
+  position: absolute;
+  top: 90%;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  background-color: var(--dark-p-bg);
+  transition: .3s ease-in-out;
+}
+@keyframes left-slide{
+  0%{
+    left: 100%
+  }
+  100%{
+    left: 0;
+  }
+}
+
+.register-link:hover::after{
+  animation: left-slide ease .3s;
+  left: 0;
+}
+
+.popup{
+  display: none;
+}
+.input-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.back-link{
+  opacity: 0.8;
+  color: var(--dark-p-bg);
+  text-decoration: none;
+  transition: .3s ease-in-out;
+  position: relative;
+  margin-top: 1em;
+}
+.back-link:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
+.back-link::after{
+  content: '';
+  position: absolute;
+  top: 90%;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  background-color: var(--dark-p-bg);
+  transition: .3s ease-in-out;
+}
+
+.back-link:hover::after{
+  animation: left-slide ease .3s;
+  left: 0;
+}

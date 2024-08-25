@@ -72,6 +72,13 @@
     align-items: center;
     justify-content: space-between;
     color: var(--black);
+    position: relative;
+    padding: 1.3em;
+  }
+  .home-logo-link{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .event-btn{
@@ -186,8 +193,13 @@
 }
 
 @media (max-width: 450px) {
+  .menu-icon{
+    padding: unset !important;
+  }
   .menu-icon a{
     order: 1;
+    position: unset !important;
+    transform: none !important;
   }
   .menu-icon .dropdown-menu{
     order: 2;

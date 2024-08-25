@@ -1,33 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ documentTitle }}</title>
-        <link rel="stylesheet" href="static/loginStyle.css">
-        <link rel="icon" href="static/hacklogo.png" type="png">
+        <link rel="stylesheet" href="{% static 'css/loginStyle.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="icon" href="{% static 'images/hacklogo.png' %}" type="png">
     </head>
     <body>
+        {% block header %}
+            {% include "header.html" %}
+        {% endblock %}
         <div class="form-box">
             <h1>Login</h1>
-            <form method="post">
+            <form>
+                {% csrf_token %}
                 <div class="input-group">
                     <div class="input-field">
-                        <input type="email" name="email" placeholder="Email" required maxlength="75">
+                        <input type="text" name="username" placeholder="Username" required maxlength="75">
                     </div>
 
                     <div class="input-field">
-                        <input id="pass" type="password" name="pass" placeholder="Password" maxlength="75" required>
+                        <input id="pass" type="password" name="password" placeholder="Password" maxlength="75" required>
                     </div>
-                    <p>Login to apply! If you don't have an account, <a href={% url 'Register' %}>register here.<a/></p>
+                    <p>Login to apply! If you don't have an account, <a class="register-link">register here.<a/></p>
                 </div>
-                <div class="btn-field">
-                    <a href="#">
-                    <button class="regbut" type="submit">Login</button>
-                    </a>
-                </div>
+                <button class="regbut" type="submit">Login</button>
             </form>
         </div>
+        <script src={% static '/js/login.js' %}></script>
+        {% block footer %}
+            {% include "footer.html" %}
+        {% endblock %}
     </body>
 </html>
 

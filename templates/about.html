@@ -5,13 +5,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ documentTitle }}</title>
-        <link href="{% static 'css/main.css' %}" rel="stylesheet">
+        <link href="{% static 'css/about.css' %}" rel="stylesheet">
+        <link href="{% static 'css/base.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
     </head>
     <body>
         {% block header %}
             {% include "header.html" %}
         {% endblock %}
-        <main>
+        <main class="about-container">
             <section>
                 <div class="hero-container">
                     <div class="hero-content">
@@ -87,17 +89,17 @@
                                 </div>
                             </details>
                             <details class="question-2">
-                                <summary> How to apply?
+                                <summary> Who can participate?
                                 </summary>
                                 <div class="faq-dropdown-content">
-                                    lorem ipsum dolor sit amet, consteuctur adpiscing elit.
+                                    Agincourt Collegiate students from any grade are allowed to participate in this hackathon. Unfortunately, it is not open to other schools this year. 
                                 </div>
                             </details>
                             <details class="question-3">
-                                <summary> How to apply?
+                                <summary> Do I need to know how to code?
                                 </summary>
                                 <div class="faq-dropdown-content">
-                                    lorem ipsum dolor sit amet, consteuctur adpiscing elit.
+                                    No, anyone from any skill level is welcome to participate. Your project will be judged on creativity, presentation, and technicality combined.
                                 </div>
                             </details>
                         </div>
@@ -105,7 +107,13 @@
                 </article>
             </section>
             <section>
-                <article>
+                <article class="meet-the-team">
+                    <div class="vert-line-div">
+                        <hr class="vert-line">
+                    </div>
+                    <div class="team-meet-title">
+                        Meet the team!
+                    </div>
                     <div class="home-container">
                         <div class="profile-card">
                             <div class="img">
@@ -217,6 +225,6 @@
         {% block footer %}
             {% include "footer.html" %}
         {% endblock %}
-        <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.js"></script>
+        <script src="{% static '/js/about.js' %}"></script>
     </body>
 </html>

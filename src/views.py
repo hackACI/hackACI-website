@@ -1,5 +1,8 @@
 from django.views.generic import TemplateView
 from src.mixins import CommonContextMixin
+from .models import Event
+from django.utils import timezone
+from datetime import timedelta
 
 class IndexView(CommonContextMixin, TemplateView):
     template_name = "home.html"
@@ -17,12 +20,16 @@ class AboutView(CommonContextMixin, TemplateView):
 class EventView(CommonContextMixin, TemplateView):
     template_name = "events.html"
     name = "Events"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        now = timezone.now()
+        context['old_events'] = Event.objects.filter(date__lt=now - timedelta(days=30)).order_by('-date')
+        context['current_events'] = Event.objects.filter(date__range=(now - timedelta(days=7), now)).order_by('-date')
+        return context
+    
 
 class LoginView(CommonContextMixin, TemplateView):
     template_name = "login.html"
     name = "Login"
 
-class RegisterView(CommonContextMixin, TemplateView):
-    template_name = "register.html"
-    name = "Register"
-    ignoreRender = True

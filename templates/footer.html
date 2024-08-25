@@ -1,11 +1,44 @@
+{% load static %}
 {% block footer %}
+    <head>
+        <link rel="stylesheet" href="{% static '/css/footer.css' %}">
+    </head>
     <footer>
         <div class="footer-container">
-            <ul class="link-list">
+            <ul class="social-icon">
+              <li class="social-iconitem"><a class="social-iconlink" href="mailto:agincourtcihackathon@gmail.com">
+                  <ion-icon name="mail-outline"></ion-icon>
+                </a></li>
+              <li class="social-iconitem"><a class="social-iconlink" href="https://discord.gg/7kqcbqpQ" target="_blank">
+                  <ion-icon name="logo-discord"></ion-icon>
+                </a></li>
+              <li class="social-iconitem"><a class="social-iconlink" href="https://www.instagram.com/agincourt_hackathon/"  target="_blank">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a></li>
+              <li class="social-iconitem"><a class="social-iconlink" href="https://github.com/hackACI/hackACI-website" target="_blank">
+                  <ion-icon name="logo-github"></ion-icon>
+                </a></li>
+            </ul>
+            <ul class="footer-link-list">
                 {% for url_name in url_list %}
                     <li><a href="{% url url_name %}">{{ url_name }}</a></li>
                 {% endfor %}
             </ul>
+            <div class="aci-content">
+                <p>HackACI or hAckCI is a student organization operating under:</p>
+                <div class="logo-name">
+                    <img src="{% static '/images/aci.png' %}" alt="ACI logo"> Agincourt Collegiate Institute
+                </div>
+                <p class="service-text"><a href="">Terms of Service</a> and <a href="">Privacy Policy</a></p>
+            </div>
+            <div class="copyright">
+                Copyright &copy; <span class="current-year"></span> hAckCI
+            </div>
         </div>
+        <script>
+            document.querySelector(".current-year").textContent = new Date().getFullYear();
+        </script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </footer>
 {% endblock %}

@@ -1,0 +1,119 @@
+:root{
+  --dark-bg-color: #12559c;
+  --white-color: #fff;
+}
+
+.footer-container{
+  background-color: var(--dark-bg-color);
+  color: var(--white-color);
+  padding: 1em;
+}
+.footer-container .social-icon {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: auto auto auto;
+  gap: 1em;
+  padding: 1em;
+  list-style: none;
+}
+
+.footer-container .social-icon li ion-icon{
+  color: var(--white-color);
+  font-size: 32px;
+}
+.footer-container .social-icon li:nth-child(4){
+  grid-column: 2;
+}
+
+.footer-container .social-icon li {
+  opacity: 0.8;
+  transition: .3s ease-in-out;
+}
+.footer-container .social-icon li:hover{
+  opacity: 1;
+  transform: translateY(-8px);
+  transition: .3s ease-in-out;
+}
+
+.footer-container .aci-content{
+  text-align: center;
+  padding: 1em;
+}
+
+.footer-container .aci-content img{
+  max-width: 80px;
+  height: auto;
+}
+.footer-container .aci-content p{
+  padding:0.5em;
+}
+
+.footer-container .aci-content .service-text a{
+  color: var(--white-color);
+  opacity: 0.8;
+  text-decoration: none;
+  position: relative;
+  transition: .3s ease-in-out;
+}
+
+.footer-container .aci-content .service-text a:hover{
+  opacity: 1;
+}
+
+.footer-container .aci-content .service-text a::after{
+  content: '';
+  position: absolute;
+  opacity: 0;
+  bottom:0;
+  left:0;
+  right: 0;
+  height: 3px;
+  width: 100%;
+  background-color: var(--white-color);
+  transition: .3s ease-in-out;
+}
+
+.footer-container .aci-content .service-text a:hover::after{
+  opacity: 1;
+}
+
+.footer-container .aci-content .logo-name{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 0.5em;
+}
+.footer-container .copyright{
+  margin-top: 1.5em;
+  margin-left: 1.5em;
+  font-size: 10px;
+}
+.footer-container .footer-link-list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  list-style: none;
+}
+
+.footer-container .footer-link-list li a{
+  text-decoration: none;
+  color: var(--white-color);
+  opacity: 0.8;
+  transition: .3s ease-in-out;
+}
+
+.footer-container .footer-link-list li a:hover{
+  opacity: 1;
+}
+
+.footer-container .footer-link-list li:has(a){
+  transition: .3s ease-in-out;
+}
+.footer-container .footer-link-list li:has(a):hover{
+  transform: scale(1.1);
+}
+

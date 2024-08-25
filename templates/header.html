@@ -27,11 +27,12 @@
                     {% endfor %}
                 </div>
             </div>
-            <a href={% url 'Home' %}><img src="{% static 'images/hacklogo.png' %}" alt="hackACI logo" class="logo"></a>
+            <a href={% url 'Home' %} class="home-logo-link"><img src="{% static 'images/hacklogo.png' %}" alt="hackACI logo" class="logo"></a>
             <a class="event-btn" href={% url 'Events' %}>Events</a>
         </div>
     </div>
-    <script defer src={% static 'js/header.js' %}></script>
+    <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.js"></script>
+    <script src={% static 'js/header.js' %}></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </header>
