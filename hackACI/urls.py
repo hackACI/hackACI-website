@@ -20,5 +20,7 @@ from src import urls as srcurls
 
 urlpatterns = [
     path("", include(srcurls), name="home"),
+    #admin_site.urls
     path('admin/', admin.site.urls),
+    
 ]

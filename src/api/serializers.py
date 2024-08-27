@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from .models import Page
 from rest_framework import serializers
 import re
 import string 
@@ -49,3 +50,10 @@ class UserSerializer(serializers.ModelSerializer):
             last_name=validated_data['last_name'],
         )
         return user
+
+class PageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Page
+        fields = ['id', 'title', 'content', 'created_at']
+
+

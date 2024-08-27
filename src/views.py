@@ -26,6 +26,7 @@ class EventView(CommonContextMixin, TemplateView):
         now = timezone.now()
         context['old_events'] = Event.objects.filter(date__lt=now - timedelta(days=30)).order_by('-date')
         context['current_events'] = Event.objects.filter(date__range=(now - timedelta(days=7), now)).order_by('-date')
+        context['order'] = Event.objects.all().order_by('order')
         return context
     
 

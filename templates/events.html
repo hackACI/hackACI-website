@@ -16,7 +16,7 @@
             <section>
                 <div class="hero-container">
                     <div class="hero-content">
-                        <h1><a href="{% url 'Events' %}">Events</a></h1>
+                        <h1><a href="{% url 'Home' %}"><span class="span-title">hAckCI</span></a> Events</h1>
                     </div>
                 </div>
             </section>
@@ -28,16 +28,25 @@
                         </div>
                         <div class="current-events-text">
                             {% if current_events %}
-                                <ul>
                                 {% for event in current_events %}
-                                    <h3>{{ event.title }}</h3>
-                                    <li>{{ event.date }}</li>
-                                    {% if event.image %}
-                                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
-                                    {% endif %}
-                                    <p>{{ event.description }}</p>
+                                <ul style="order: {{ event.order }};">
+                                        {% if event.image %}
+                                            <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                                        {% endif %}
+                                        <h3>{{ event.title }}</h3>
+                                        <li><ion-icon name="alarm-outline"></ion-icon>{{ event.date }}</li>
+                                        <li><ion-icon name="location-outline"></ion-icon>{{ event.location }}</li>
+                                        {% if event.registration_deadline %}
+                                            <li><ion-icon name="timer-outline"></ion-icon>{{ event.registration_deadline }}</li>
+                                        {% endif %}
+                                        <div class="current-event-desc">
+                                            <div class="hr-div">
+                                                <hr>
+                                            </div>
+                                            <p>{{ event.description }}</p>
+                                        </div>
+                                    </ul>
                                 {% endfor %}
-                                </ul>
                             {% else %}
                                 <p>No current events available.</p>
                             {% endif %}
@@ -52,18 +61,27 @@
                         <div class="old-events-title">
                             <h2>Old Events</h2>
                         </div>
-                        <div class="current-events-text">
+                        <div class="old-events-text">
                             {% if old_events %}
-                                <ul>
                                 {% for event in old_events %}
-                                    <h3>{{ event.title }}</h3>
-                                    <li>{{ event.date }}</li>
-                                    {% if event.image %}
-                                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
-                                    {% endif %}
-                                    <p>{{ event.description }}</p>
+                                    <ul style="order: {{ event.order }};">
+                                        {% if event.image %}
+                                            <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                                        {% endif %}
+                                        <h3>{{ event.title }}</h3>
+                                        <li><ion-icon name="alarm-outline"></ion-icon>{{ event.date }}</li>
+                                        <li><ion-icon name="location-outline"></ion-icon>{{ event.location }}</li>
+                                        {% if event.registration_deadline %}
+                                            <li><ion-icon name="timer-outline"></ion-icon>{{ event.registration_deadline }}</li>
+                                        {% endif %}
+                                        <div class="old-event-desc">
+                                            <div class="hr-div">
+                                                <hr>
+                                            </div>
+                                            <p>{{ event.description }}</p>
+                                        </div>
+                                    </ul>
                                 {% endfor %}
-                                </ul>
                             {% else %}
                                 <p>No old events available.</p>
                             {% endif %}
@@ -77,8 +95,11 @@
                 </article>
             </section>
         </main>
+        <script src="{% static '/js/events.js' %}"></script>
         {% block footer %}
             {% include "footer.html" %}
         {% endblock %}
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>
 </html>

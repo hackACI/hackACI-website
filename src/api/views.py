@@ -1,12 +1,26 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
 from rest_framework import status, generics
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from django.contrib.auth.models import User
-from .serializers import UserSerializer
-from django.conf import settings
+from .serializers import UserSerializer, PageSerializer
+from .models import Page
+
+class LogoutView(APIView):
+    name = "auth-logout"
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        # Clear the authentication cookie
+        logout(request)
+
+        response = Response({
+            'message': 'Logout successful!'
+        }, status=status.HTTP_200_OK)
+        # make sure to delete cookiiiie!
+        response.delete_cookie('sessionid')
+        return response
 
 
 class RegisterView(APIView):
@@ -33,22 +47,17 @@ class LoginView(APIView):
         user = authenticate(username=username, password=password)
 
         if user is not None:
-            token, created = Token.objects.get_or_create(user=user)
+            login(request, user)
+
             response = Response({
                 'message': 'Login Successful!',
                 'user': UserSerializer(user).data
             }, status=status.HTTP_200_OK)
-            response.set_cookie(
-                key='authToken',
-                value=token.key,
-                httponly=True, #no js access
-                secure=settings.SECURE_SSL_REDIRECT, #cookies only work on https
-                samesite='Lax'
-            )
             return response
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
 class UserList(generics.ListAPIView):
+    #TODO, make into admin user
     permission_classes = [IsAuthenticated]
 
     queryset = User.objects.all()
@@ -56,6 +65,7 @@ class UserList(generics.ListAPIView):
     name = "User List"
 
 class UserDetail(generics.RetrieveAPIView):
+    #TODO, make into admin user
     permission_classes = [IsAuthenticated]
 
     queryset = User.objects.all()
@@ -68,3 +78,26 @@ class UserDelete(generics.DestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     name = "User Delete"
+
+class CurrentUserView(APIView):
+    permission_classes = [IsAuthenticated]
+    name = "Current User"
+
+    def get(self, request):
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+
+class PageSearchView(APIView):
+    authentication_classes = []
+    permission_classes = []
+    name = "Search"
+
+    def get(self, request):
+        query = request.GET.get('q', '')
+        if query:
+            pages = Page.objects.filter(title__icontains=query)
+            serializer = PageSerializer(pages, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({"error": "No search query provided"}, status=status.HTTP_400_BAD_REQUEST)
+

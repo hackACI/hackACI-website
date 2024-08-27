@@ -13,23 +13,27 @@
         {% block header %}
             {% include "header.html" %}
         {% endblock %}
-        <div class="form-box">
-            <h1>Login</h1>
-            <form>
-                {% csrf_token %}
-                <div class="input-group">
-                    <div class="input-field">
-                        <input type="text" name="username" placeholder="Username" required maxlength="75">
-                    </div>
+        <main>
+            <div class="form-container">
+                <div class="form-box">
+                    <h1>Login</h1>
+                    <form>
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <div class="input-field">
+                                <input type="text" name="username" placeholder="Username" required maxlength="75">
+                            </div>
 
-                    <div class="input-field">
-                        <input id="pass" type="password" name="password" placeholder="Password" maxlength="75" required>
-                    </div>
-                    <p>Login to apply! If you don't have an account, <a class="register-link">register here.<a/></p>
+                            <div class="input-field">
+                                <input id="pass" type="password" name="password" placeholder="Password" maxlength="75" required>
+                            </div>
+                            <p>Login to apply! If you don't have an account, <a class="register-link">register here.<a/></p>
+                        </div>
+                        <button class="regbut" type="submit">Login</button>
+                    </form>
                 </div>
-                <button class="regbut" type="submit">Login</button>
-            </form>
-        </div>
+            </div>
+        </main>
         <script src={% static '/js/login.js' %}></script>
         {% block footer %}
             {% include "footer.html" %}

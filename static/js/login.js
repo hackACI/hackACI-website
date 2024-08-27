@@ -50,7 +50,7 @@ function openPopup(){
   button.classList.add("regbut");
   button.style.marginTop = "1em";
 }
-
+let lastElementArray =[];
 function onRegisterFormSubmit(formElement, url){
   formElement.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -69,26 +69,39 @@ function onRegisterFormSubmit(formElement, url){
             console.log("Registeration success!");
             openPopup();
           }else{
-            console.log("Failed login.", data.error);
-            displayErrorMessage(document.querySelector(".input-group"), data.error);
+            console.log("Failed registeration.", data);
+            lastElementArray.forEach((element) => {
+              element.remove();
+            }); 
+            for (const key in data) {
+              const errors = data[key];
+              const pelement = displayErrorMessage(document.querySelector(".input-group"), errors[0], false);
+              lastElementArray.push(pelement);
+            }
           }
         })
       .catch(error => {
           console.error('Error', error);
       });
-    formElement.reset();
+    
+    resetForm(formElement);
   });
 }
 
-function displayErrorMessage(element, error){
+function displayErrorMessage(element, error, removeOther=true){
   const redP = document.createElement("p");
   redP.className = "redP-dymn-p";
-  if (document.querySelector(".redP-dymn-p")){
+  if (document.querySelector(".redP-dymn-p") && removeOther){
     document.querySelector(".redP-dymn-p").remove();
   }
-  redP.style.color = "red";
+  redP.style.borderRadius = "4px";
+  redP.style.padding = "8px 12px";
+  redP.style.marginTop = "1em";
+  redP.style.fontWeight = "700";
+  redP.style.border = "1px solid var(--status-red)";
+  redP.style.color = "var(--status-red)";
   redP.textContent = error;
-  element.appendChild(redP);
+  element.prepend(redP);
   return redP;
 }
 
@@ -96,6 +109,14 @@ function getCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function resetForm(form){
+  form.reset();
+  const invalidEmailElement = document.querySelector(".dynm-validity-p");
+  if (invalidEmailElement){
+    invalidEmailElement.remove();
+  }
 }
 
 function onLoginFormSubmit(formElement, url){
@@ -116,7 +137,7 @@ function onLoginFormSubmit(formElement, url){
             console.log(data.message);
             console.log(data);
             //redirect
-            //window.location.href
+            window.location.replace("/api/users/");
           }else{
             console.log("Failed login.", data.error);
             if (data.error === "Invalid credentials"){
@@ -129,7 +150,7 @@ function onLoginFormSubmit(formElement, url){
       .catch(error => {
           console.error('Error', error);
       });
-    formElement.reset();
+    resetForm(formElement);
   });
 }
 onLoginFormSubmit(document.querySelector(".form-box").querySelector("form"), '/api/login/');
@@ -150,10 +171,15 @@ const registerBtnCallback = () => {
   backBtn.addEventListener("click", () => {
       const formBox = document.querySelector(".form-box");
       if (savedOuterHTML) {
-          //save first
-          formBox.outerHTML = savedOuterHTML;
-          reloadPageCallbacks(false, true);
-          onLoginFormSubmit(document.querySelector(".form-box").querySelector("form"), '/api/login/');
+        //save first
+        formBox.outerHTML = savedOuterHTML;
+        //check if there are any left over errors from before and remove them
+        const error = document.querySelector(".redP-dymn-p");
+        if(error){
+          error.remove();
+        }
+        reloadPageCallbacks(false, true);
+        onLoginFormSubmit(document.querySelector(".form-box").querySelector("form"), '/api/login/');
       }
   });
 
@@ -224,7 +250,7 @@ window.addEventListener('load', () => {
 function isFormFilled(form) {
   const inputs = form.querySelectorAll('input, select, textarea');
   for (let input of inputs) {
-    if (input.type !== 'submit' && input.type !== 'button' && input.value.trim() !== '') {
+    if (input.type !== 'submit' && input.type !== 'button' && input.type !== 'hidden' && input.value.trim() !== '') {
       return true; // Form has data
     }
   }

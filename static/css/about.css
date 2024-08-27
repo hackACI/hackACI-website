@@ -6,12 +6,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8em;
   background: url('/static/images/darkblueback.jpg'), var(--accent-bg);
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
   position: relative;
+  max-height: 550px;
+  height: 100vh;
 }
 .hero-container::before{
   content: '';
@@ -20,7 +21,7 @@
   right:0;
   top:0;
   position: absolute;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.5);
   z-index: 0;
 }
 .hero-container .hero-content{
@@ -243,6 +244,7 @@ details summary > * {
   margin-top: 1em;
   flex-direction: column;
   gap: 1em;
+  overflow: hidden;
 }
 
 .faq .text-container .questions details {

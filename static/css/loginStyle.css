@@ -1,7 +1,16 @@
+
+body{
+  background: var(--bg-color); 
+}
+
 .form-box{
   max-height: 60%;
-  background: var(--bg-color); 
-  padding: 3em;
+  margin: 3em;
+  padding: 2em;
+  width: 75%;
+  border-radius: 15px;
+  margin-right: auto;
+  margin-left: auto;
   animation: fadeInAnimation ease 0.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
@@ -9,6 +18,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 12em;
+  background-color: var(--dark-p-bg);
 }
 
 @keyframes fadeInAnimation {
@@ -22,7 +33,7 @@
 
 .form-box h1{
     font-size: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     position: relative;
     color: var(--real-white); 
 }
@@ -78,7 +89,7 @@ form p{
 .regbut{
     padding: 10px 60px;
     flex-basis: 48%;
-    background: var(--dark-p-bg);
+    background: var(--bg-color);
     color: #fff;
     height: 45px;
     border-radius: 20px;
@@ -101,7 +112,7 @@ form p{
 }
 .register-link{
   opacity: 0.8;
-  color: var(--dark-p-bg);
+  color: var(--accent-bg);
   text-decoration: none;
   transition: .3s ease-in-out;
   position: relative;
@@ -118,7 +129,7 @@ form p{
   bottom: 0;
   left: 100%;
   right: 0;
-  background-color: var(--dark-p-bg);
+  background-color: var(--accent-bg);
   transition: .3s ease-in-out;
 }
 @keyframes left-slide{
@@ -148,7 +159,7 @@ form p{
 
 .back-link{
   opacity: 0.8;
-  color: var(--dark-p-bg);
+  color: var(--accent-bg);
   text-decoration: none;
   transition: .3s ease-in-out;
   position: relative;
@@ -166,7 +177,7 @@ form p{
   bottom: 0;
   left: 100%;
   right: 0;
-  background-color: var(--dark-p-bg);
+  background-color: var(--accent-bg);
   transition: .3s ease-in-out;
 }
 
