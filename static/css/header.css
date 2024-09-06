@@ -65,6 +65,145 @@
   display: none;
 }
 
+.account-modal-container{
+  background-color: var(--dark-p-bg);
+  color: var(--real-white);
+  position: fixed;
+  width: calc(300px + 9.375rem);
+  max-width: 100vw;
+  height: 100vh !important;
+  top: 0;
+  right:0;
+  z-index: 2000;
+  padding: 2em;
+  margin: 0;
+  opacity: 0;
+  display: none;
+}
+.account-modal-container a{
+  color: var(--accent-bg);
+  width: fit-content;
+}
+.modal-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5em;
+}
+#fullscreen{
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.5em;
+}
+#fullscreen:hover{
+  text-decoration:none;
+}
+.modal-title{
+  font-size: 25px;
+}
+.modal-header .close-btn{
+  order: 2;
+  font-size: 40px;
+  color: red;
+  background: transparent;
+  border: none;
+}
+
+.modal-header .close-btn:hover{
+  cursor: pointer;
+}
+
+.modal-header .close-btn .sr-only{
+  display: none;
+}
+.modal-body .user-actions{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1em;
+}
+
+.modal-body .user-actions a{
+  margin-left: 0.5em;
+  display: none;
+}
+.modal-body .preferences{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1em;
+}
+.modal-body .preferences a{
+  margin-left: 0.5em;
+  display: none;
+}
+
+.modal-body h3{
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.modal-body h3 ion-icon{
+  font-weight: bolder;
+  transition: .2s;
+}
+.modal-body h3:hover{
+  cursor: pointer;
+}
+
+.overlay-darken {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity for desired darkness */
+  z-index: 1500; /* Ensure it's on top of other elements */
+}
+.settings-menu{
+  padding: 1em;
+  margin: 1em;
+  color: var(--real-white);
+  background-color: var(--accent-bg);
+  border-radius: 9px;
+}
+.fontsize-container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: flex-start;
+  padding: 0.5em;
+}
+.fontfamily-container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: flex-start;
+  padding: 0.5em;
+}
+
+.textcolor-container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: flex-start;
+  padding: 0.5em;
+}
+select{
+  padding: 0.3em;
+  background-color: var(--bg-color);
+  color: var(--real-white);
+  border: 1px solid var(--real-white);
+  border-radius: 5px;
+}
+select:hover{
+  cursor: pointer;
+}
+input:hover{
+  cursor: pointer;
+}
+
 @media (max-width: 980px) {
   .link-list{
     display: none;
@@ -211,8 +350,10 @@
   }
   .menu-icon .dropdown-menu{
     order: 2;
+    margin-right: 1em;
   } 
   .event-btn{
     display: none;
   }
 }
+

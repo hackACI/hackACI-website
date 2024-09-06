@@ -54,6 +54,6 @@ class UserSerializer(serializers.ModelSerializer):
 class PageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
-        fields = ['id', 'title', 'content', 'created_at']
+        fields = ['title', 'description', 'url', 'date']
 
 

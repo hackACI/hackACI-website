@@ -1,4 +1,6 @@
+from django.urls import reverse_lazy
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from src.mixins import CommonContextMixin
 from .models import Event
 from django.utils import timezone
@@ -33,4 +35,10 @@ class EventView(CommonContextMixin, TemplateView):
 class LoginView(CommonContextMixin, TemplateView):
     template_name = "login.html"
     name = "Login"
+    
+
+class AccountView(LoginRequiredMixin, CommonContextMixin, TemplateView):
+    template_name = "account.html"
+    name = "Profile"
+    login_url = reverse_lazy("Login")
 

@@ -137,7 +137,7 @@ function onLoginFormSubmit(formElement, url){
             console.log(data.message);
             console.log(data);
             //redirect
-            window.location.replace("/api/users/");
+            window.location.replace("/account/");
           }else{
             console.log("Failed login.", data.error);
             if (data.error === "Invalid credentials"){

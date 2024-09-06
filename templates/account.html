@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ documentTitle }}</title>
+        <link href="{% static 'css/base.css' %}" rel="stylesheet">
+        <link href="{% static 'css/account.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        {% block header %}
+            {% include "header.html" %}
+        {% endblock %}
+        <main>
+            <section>
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <h1><a href="{% url 'Home' %}"><span class="span-title">hAckCI</span></a> Account</h1>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="account-container">
+                   <div class="account-title">
+                        <h1>Welcome, <span class="account-username"></span></h1>
+                    </div> 
+                    <div class="account-info">
+                        <h2>Account Information</h2>
+                        <ul>
+                            <li>First Name: <span class="account-first-name"></span></li>
+                            <li>Last Name: <span class="account-last-name"></span></li>
+                            <li>Username: <span class="account-username"></span></li>
+                            <li>Email: <span class="account-email"></span></li>
+                        </ul>
+                        <div class="reset-pass-div">
+                            <h3>Change Password</h3>
+                            <div class="password-container">
+                                <div class="old-pass">
+                                    <div class="old-pass-title">
+                                        Old Password
+                                    </div>
+                                    <div class="pass-input">
+                                        <input id="old-password" name="old-password" type="password" autocomplete="current-password">
+                                    </div>
+                                </div>
+                                <div class="new-pass">
+                                    <div class="new-pass-title">
+                                        New Password
+                                    </div>
+                                    <div class="pass-input">
+                                        <input id="new-password" name="new-password" type="password">
+                                    </div>
+                                </div>
+                                <div class="confirm-new-pass">
+                                    <div class="confirm-new-pass-title">
+                                        Confirm New Password
+                                    </div>
+                                    <div class="pass-input">
+                                        <input id="confirm-new-password" name="confirm-new-password" type="password">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quick-actions-div">
+                            <h3>Quick Actions</h3>
+                            <div class="sign-out-btn">
+                                <ion-icon name="log-out-outline"></ion-icon> Sign Out
+                            </div>
+                            <div class="delete-account-btn">
+                                <ion-icon name="trash-outline"></ion-icon> Delete Account
+                            </div>
+                        </div>
+                    </div>
+                 </div> 
+            </section>
+        </main>
+        {% block footer %}
+            {% include "footer.html" %}
+        {% endblock %}
+        <script type="module" src="{% static '/js/account.js' %}"></script>
+    </body>
+</html>

@@ -4,7 +4,7 @@ from django.db import models
 class Page(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    date = models.DateTimeField()
+    date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
@@ -13,5 +13,8 @@ class Page(models.Model):
         return reverse(self.title)
 
     @property
-    def url(self):
+    def curr_url(self):
         return self.get_url()
+
+    # add a url view (based on Reverse name)
+    url = curr_url

@@ -11,12 +11,59 @@
   --bg-color: #3498db;
   --accent-bg: #87dbfb; 
   --dark-accent-bg: #1585cf;
+  --boring-blue: #2e70b8;
   --dark-p-bg: #2C4280;
   --black: #000;
   --real-white: #fff;
   --status-red: #e85856;
+  --admin-green: #4CAF50;
 }
 
 main{
   background-color: var(--bg-color);
+}
+
+
+.admin-style {
+  color: var(--real-white); /* Text color */
+  background-color: #333333 !important; /* Dark background */
+  border: 2px solid  var(--admin-green) !important; /* Green border */
+  padding: 10px 15px !important; /* Padding */
+  border-radius: 5px !important; /* Rounded corners */
+  font-weight: bold !important; /* Bold text */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+/* Hover effect */
+.admin-style:hover {
+  background-color: var(--admin-green) !important; /* Change background to green on hover */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2) !important; /* Deeper shadow on hover */
+}
+
+.admin-style-a {
+  color: var(--real-white); /* Green links */
+  text-decoration: none; /* Remove underline */
+  transition: .3s ease-in-out;
+}
+.admin-style-a:hover {
+  color: var(--admin-green);
+  text-decoration: underline; /* Underline on hover */
+  background-color: rgba(255,255,255,0.7);
+  padding: 0.3em;
+  border-radius: 5px;
+}
+
+
+/* default username */
+.username-dymn{
+  padding: 0.5em;
+  color: var(--real-white);
+  background-color: var(--dark-accent-bg);
+  border: 1px solid var(--real-white);
+  border-radius: 9px;
+}
+
+.username-dymn:hover{
+  cursor: pointer;
 }

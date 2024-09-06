@@ -86,7 +86,24 @@ class CurrentUserView(APIView):
     def get(self, request):
         user = request.user
         serializer = UserSerializer(user)
-        return Response(serializer.data)
+        
+        is_admin = user.is_staff or user.is_superuser
+        response_data = {
+            'data': serializer.data,
+            'is_admin': is_admin
+        }
+        return Response(response_data)
+
+class CurrentUserDelete(APIView):
+    permission_classes = [IsAuthenticated]
+    name = "Current User Delete"
+
+    def delete(self, request):
+        user = request.user
+
+        user.delete() #deletes user from db
+
+        return Response({"message": "Your account has been deleted."})
 
 class PageSearchView(APIView):
     authentication_classes = []

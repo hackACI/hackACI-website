@@ -12,5 +12,6 @@ urlpatterns = [
     #allow for users search and delete by id 
     path('users/<int:pk>', views.UserDetail.as_view(),name=views.UserDetail.name),
     path('users/<int:pk>/delete', views.UserDelete.as_view(), name=views.UserDelete.name),
+    path('users/me/delete', views.CurrentUserDelete.as_view(), name=views.CurrentUserDelete.name),
     path('users/me/', views.CurrentUserView.as_view(), name=views.CurrentUserView.name)
 ]
