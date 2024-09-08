@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
+from django.core.management.utils import get_random_secret_key
 import os
 import logging
 
@@ -28,26 +29,43 @@ MEDIA_URL = '/media/'
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+secretKeyEnv = os.getenv("SECRET_KEY")
+if secretKeyEnv:
+    SECRET_KEY = secretKeyEnv 
+else:
+    SECRET_KEY = get_random_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 debugEnv = os.getenv("DEBUG")
-if debugEnv == "True":
-    DEBUG = True
-elif debugEnv == "False":
-    DEBUG = False
+
+DEBUG = True
+if debugEnv:
+    if debugEnv.lower() == "true":
+        DEBUG = True
+    elif debugEnv.lower() == "false":
+        DEBUG = False
 else:
     logging.warn("DEBUG value has not been set in an .env file!")
-    logging.warn("DEBUG sent to false as default.")
-    DEBUG = False
+    logging.warn("DEBUG has been set to True as default.")
+    logging.warn("DONT USE IN PRODUCTION when DEBUG=True, insecure!")
+    DEBUG = True
 
-if DEBUG:
-    SECURE_SSL_REDIRECT = False
+secureSslRedirectEnv = os.getenv("SECURE_SSL_REDIRECT")
+if secureSslRedirectEnv:
+    if secureSslRedirectEnv.lower() == "true":
+        SECURE_SSL_REDIRECT = True
+    elif secureSslRedirectEnv.lower() == "false":
+        SECURE_SSL_REDIRECT = False
 else:
-    SECURE_SSL_REDIRECT = True
+    logging.warn("SECURE_SSL_REDIRECT has not been set in an .env file!")
+    logging.warn("SECURE_SSL_REDIRECT has been set to False as default.")
+    SECURE_SSL_REDIRECT = False
+
+
 ALLOWED_HOSTS = ["*"]
+
 if not DEBUG and ALLOWED_HOSTS == "*":
-    logging.warn("ALLOWED_HOSTS set to '*'. Only use in development, unsecure!")
+    raise ValueError("ALLOWED_HOSTS cannot be '*' in production!")
 
 # Application definition
 
