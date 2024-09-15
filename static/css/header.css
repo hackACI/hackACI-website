@@ -1,9 +1,3 @@
-:root {
-  --bg-color: #3498db;
-  --accent-bg: #87dbfb; 
-  --black: #000;
-  --real-white: #fff;
-}
 .header-container{
   position: absolute;
   padding: 35px 0;
@@ -312,7 +306,7 @@ input:hover{
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background: rgba(135,219,251,0.7);
+    background: rgba(181, 106, 255, 0.7);
     backdrop-filter: blur(5px);
     padding: 1rem;
     border-radius: 9px;

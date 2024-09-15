@@ -8,15 +8,18 @@
 
 /* root variables */
 :root{
-  --bg-color: #3498db;
-  --accent-bg: #87dbfb; 
-  --dark-accent-bg: #1585cf;
-  --boring-blue: #2e70b8;
-  --dark-p-bg: #2C4280;
+  --bg-color: #72009A;
+  --accent-bg: #B56AFF; 
+  --alt-accent-bg: #B366AE;
+  --dark-accent-bg: #9700ce;
+  --boring-blue: #8500B3;
+  --dark-p-bg: #5f0081;
   --black: #000;
   --real-white: #fff;
   --status-red: #e85856;
   --admin-green: #4CAF50;
+  --dark-bg-color: #4c0069;
+  --white-color: #fff;
 }
 
 main{

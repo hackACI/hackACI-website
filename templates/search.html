@@ -13,13 +13,20 @@
             {% include "header.html" %}
         {% endblock %}
         <main>
+            <section>
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <h1><a href="{% url 'Home' %}"><span class="span-title">hAckCI</span></a> Search</h1>
+                    </div>
+                </div>
+            </section>
             <div class="main-content">
                 <form class="search-form" action="" role="search" autocomplete="off">
                     <label for="search-input">
                         <ion-icon name="search" style="font-size: 30px;"></ion-icon>
                         <input type="text" id="search-input" name="q" placeholder="search">
                     </label>
-                    <button type="submit" aria-label="Submit Search">Submit</button>
+                    <button type="submit" aria-label="Submit Search">Search</button>
                 </form>
             </div>
         </main>
@@ -28,6 +35,7 @@
         {% endblock %}
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script defer type="module" src="{% static '/js/search.js'%}"></script>
     </body>
 </html>
 

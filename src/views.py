@@ -42,3 +42,9 @@ class AccountView(LoginRequiredMixin, CommonContextMixin, TemplateView):
     name = "Profile"
     login_url = reverse_lazy("Login")
 
+class SponsorView(CommonContextMixin, TemplateView):
+    template_name = "sponsors.html"
+    name = "Sponsors"
+    ignoreRender = True
+
+

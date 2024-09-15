@@ -12,6 +12,7 @@ urlpatterns = [
     path("events/", views.EventView.as_view(), name=views.EventView.name),
     path("account/", views.AccountView.as_view(), name=views.AccountView.name),
     path("login/", views.LoginView.as_view(), name=views.LoginView.name),
+    path("sponsors/", views.SponsorView.as_view(), name=views.SponsorView.name),
 ]
 
 if settings.DEBUG:

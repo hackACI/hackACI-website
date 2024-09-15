@@ -13,7 +13,8 @@ To setup for locally installing the website, follow the instructions below:
 2.5 (optional) Create a virtual environment for Python3, you can run ```python -m venv .venv```.
 3. cd into the hackACI directory and run ```pip install -r requirements.txt```.
 4. Copy the .env.example file into the .env file (using ```cp``` if needed) to modify config, and put your own ```SECRET_KEY```.
-5. After the steps above, you can run ```python manage.py runserver``` to start the server locally.
+5. Run the migrations included using ```python manage.py migrate```.
+6. After the steps above, you can run ```python manage.py runserver``` to start the server locally.
 
 ## Notes
 - By default, the server starts with DEBUG = True and SECURE_SSL_REDIRECT = False unless stated otherwise in the .env config file.

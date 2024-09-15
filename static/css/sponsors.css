@@ -1,0 +1,13 @@
+main{
+  color: var(--real-white);
+}
+
+/* container for sponsors */
+.sponsor-div-tcontainer{
+  padding: 2em; 
+}
+
+.sponsor-div-text{
+  padding: 1em;
+}
+

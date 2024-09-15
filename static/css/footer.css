@@ -1,8 +1,3 @@
-:root{
-  --dark-bg-color: #12559c;
-  --white-color: #fff;
-}
-
 .footer-container{
   background-color: var(--dark-bg-color);
   color: var(--white-color);
