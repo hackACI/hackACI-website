@@ -1,3 +1,102 @@
+.hero-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('/static/images/purplespace.jpg'), var(--accent-bg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  position: relative;
+  max-height: 550px;
+  height: 100vh;
+}
+.hero-container::before{
+  content: '';
+  left:0;
+  bottom:0;
+  right:0;
+  top:0;
+  position: absolute;
+  background: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+.hero-container .hero-content{
+  width:fit-content;
+  text-align: center;
+  z-index: 1;
+}
+.hero-container .hero-content h1{
+  font-size: 35px;
+  font-weight: 500;
+  color: var(--real-white);
+}
+.hero-container .hero-content span {
+  font-size: 50px;
+  font-weight: 600; 
+  background-image: -webkit-linear-gradient(196deg, var(--bg-color), var(--dark-p-bg),var(--alt-accent-bg) , var(--accent-bg, var(--real-white)));
+  background-image: linear-gradient(196deg, var(--bg-color), var(--dark-p-bg),var(--alt-accent-bg) , var(--accent-bg, var(--real-white)));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300%; /* Make the background bigger to allow for the animation */
+  -webkit-animation: gradientTextAnim 12s ease infinite;
+  animation: gradientTextAnim 12s ease infinite;
+  position: relative;
+  transition: 0.3s ease-in-out;
+}
+
+
+.hero-container .hero-content a{
+  text-decoration: none;
+}
+.hero-container .hero-content span::before {
+  content: ""; /* This pseudo-element will act as the background */
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(52, 152, 219, 0.25); /* Example background color behind the span */
+  z-index: 0; /* Places the background behind the span */
+}
+
+.hero-container .hero-content span:hover {
+  cursor: pointer;
+  background-image: -webkit-linear-gradient(196deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0ff, #4b0082, #8b00ff);
+  background-image: linear-gradient(196deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0ff, #4b0982, #8b00ff);
+  background-size: 300%; /* Make the background bigger to allow for the animation */
+  -webkit-animation: gradientTextAnim 5s ease-in-out infinite;
+  animation: gradientTextAnim 5s ease-in-out infinite; }
+.hero-container .hero-content span:hover::before {
+  visibility: visible;
+}
+
+
+@keyframes gradientTextAnim {
+  0% {
+    background-position: 0% 50%; /* Start at the beginning of the gradient */
+  }
+  50% {
+    background-position: 100% 50%; /* Move to the end of the gradient */
+  }
+  100% {
+    background-position: 0% 50%; /* Move back to the start */
+  }
+}
+
+@-webkit-keyframes gradientTextAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 main{
   color: var(--real-white);
 }
@@ -5,9 +104,39 @@ main{
 /* container for sponsors */
 .sponsor-div-tcontainer{
   padding: 2em; 
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  gap: 1em;
 }
-
+.sponsor-div-tcontainer > .sponsor-div-text:nth-child(7) {
+  grid-column: 2 / 3; /* Place the 7th item in the center column */
+}
+@media (max-width: 600px) {
+  .sponsor-div-tcontainer {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
 .sponsor-div-text{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
   padding: 1em;
 }
+.sponsor-div-text img{
+  max-width: 250px;
+  height: auto;
+  width: 100%;
+}
+
+.sponsor-container-thx{
+  padding: 2em;
+}
+.sponsor-thx-text{
+  text-align: center;
+}
+
+.sponsor-thx-text h2{
+  padding: 0.3em;
+}
+
 
