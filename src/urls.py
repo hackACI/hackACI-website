@@ -13,6 +13,8 @@ urlpatterns = [
     path("account/", views.AccountView.as_view(), name=views.AccountView.name),
     path("login/", views.LoginView.as_view(), name=views.LoginView.name),
     path("sponsors/", views.SponsorView.as_view(), name=views.SponsorView.name),
+    path("privacypolicy/", views.PrivacyView.as_view(), name=views.PrivacyView.name),
+    path("tos/", views.TermsOfServiceView.as_view(), name=views.TermsOfServiceView.name),
 ]
 
 if settings.DEBUG:

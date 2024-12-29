@@ -102,6 +102,16 @@
 
 }
 
+.main-content a {
+    color: #007bff;  /* Light blue color for links */
+    text-decoration: underline;  /* Optional: underlined links */
+    opacity: 0.8;  /* Slightly faded color to make it lighter */
+}
+
+.main-content a:hover {
+    opacity: 1;  /* Full opacity on hover to indicate a link */
+    text-decoration: underline;  /* Maintain underline on hover */
+}
 .main-content form{
   display: flex;
   align-items: center;

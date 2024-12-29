@@ -33,8 +33,8 @@
 .hero-container .hero-content span {
   font-size: 50px;
   font-weight: 600;
-  background-image: -webkit-linear-gradient(196deg, #2db7f2, #1c6dd6,  #61b7e3, #6197eb);
-  background-image: linear-gradient(196deg, #2db7f2, #1c6dd6,  #61b7e3, #6197eb);
+  background-image: -webkit-linear-gradient(196deg, var(--bg-color), var(--dark-p-bg),var(--alt-accent-bg) , var(--accent-bg, var(--real-white)));
+  background-image: linear-gradient(196deg, var(--bg-color), var(--dark-p-bg),var(--alt-accent-bg) , var(--accent-bg, var(--real-white)));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

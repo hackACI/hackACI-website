@@ -126,6 +126,12 @@ main{
   max-width: 250px;
   height: auto;
   width: 100%;
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+}
+
+.sponsor-div-text img:hover{
+  opacity: 0.8;
 }
 
 .sponsor-container-thx{
@@ -139,4 +145,4 @@ main{
   padding: 0.3em;
 }
 
-
+n

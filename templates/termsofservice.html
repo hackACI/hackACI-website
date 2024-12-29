@@ -1,0 +1,35 @@
+{% load markdownify %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ documentTitle }}</title>
+        <link href="{% static 'css/search.css'%}" rel="stylesheet">
+        <link href="{% static 'css/base.css'%}" rel="stylesheet">
+    </head>
+    <body>
+        {% block header %}
+            {% include "header.html" %}
+        {% endblock %}
+        <main>
+            <section>
+                <div class="hero-container" style="background:url('/static/images/summerlandscape.jpg'); background-attachment: fixed; background-size:cover; background-repeat: no-repeat;">
+                    <div class="hero-content">
+                        <h1><a href="{% url 'Home' %}"><span class="span-title">hAckCI</span></a> Terms</h1>
+                    </div>
+                </div>
+            </section>
+            <div class="main-content" style="color:var(--real-white);">
+                {{ file_data|markdownify }}
+            </div>
+        </main>
+        {% block footer %}
+            {% include "footer.html" %}
+        {% endblock %}
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>
+

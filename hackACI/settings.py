@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'src',
     'rest_framework',
     'rest_framework.authtoken',
+    'markdownify',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -177,3 +178,14 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Configuration to make Markdownify Run.
+MARKDOWNIFY = {
+    "default": {
+        "WHITELIST_TAGS": [
+            'a', 'p', 'b', 'i', 'em', 'strong', 'ul', 'li', 'ol', 'code', 'pre',
+            'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'br'
+        ],
+        "WHITELIST_ATTRS": ['href', 'src', 'alt'],
+        "WHITELIST_PROTOCOLS": ['http', 'https'],
+    }
+}
