@@ -269,5 +269,6 @@ h2{
   flex-direction: column;
   gap: 1em;
   padding: 1em;
+  padding-bottom: 2.5em;
 }
 
