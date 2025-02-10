@@ -54,31 +54,8 @@ class PrivacyView(CommonContextMixin, TemplateView):
     name = "Privacy Policy"
     ignoreRender = True
 
-    def get_context_data(self, **kwargs):
-        content = super().get_context_data(**kwargs)
-        filename = path.join(settings.BASE_DIR, 'static/info', 'privacy.md')
-        try:
-            with open(filename, "r", encoding="utf-8") as file:
-                content["file_data"] = file.read()
-        except FileNotFoundError as e:
-            content["file_data"] = "Whoops, there was an error grabbing this data!"
-            print("[ERR] File not found.", e)
-        return content
-
 class TermsOfServiceView(CommonContextMixin, TemplateView):
     template_name = "termsofservice.html"
     name = "Terms Of Service"
     ignoreRender = True
-
-    def get_context_data(self, **kwargs):
-        content = super().get_context_data(**kwargs)
-        filename = path.join(settings.BASE_DIR, 'static/info', 'terms.md')
-        try:
-            with open(filename, "r", encoding="utf-8") as file:
-                content["file_data"] = file.read()
-        except FileNotFoundError as e:
-            content["file_data"] = "Whoops, there was an error grabbing this data!"
-            print("[ERR] File not found.", e)
-        return content
-
 
