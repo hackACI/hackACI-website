@@ -8,6 +8,15 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- meta tags -->
+        <meta property="og:title" content="{{ documentTitle }}">
+        <meta property="og:description" content="Welcome to hAckCI, a platform for hosting and managing hackathons at ACI, connecting innovators, teams, and judges to create impactful projects.">
+        <meta property="og:image" content="{% static 'images/hacklogo.png' %}">
+        <meta property="og:url" content="{{ request.build_absolute_uri }}">
+        <meta property="og:type" content="website">
+        <meta name="description" content="hAckCI is a platform for hosting and managing hackathons at ACI, connecting participants, teams, and judges to drive innovation.">
+        <meta name="keywords" content="hackathon, ACI, coding competition, innovation, tech event, programming, project showcase">
+        <meta name="author" content="The hAckCI Team">
     </head>
     <body>
         {% block header %}
