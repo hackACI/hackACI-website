@@ -13,10 +13,10 @@
             <div class="navbar">
                 <img src="{% static 'images/hacklogo.png' %}" class="logo">
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/#aboutus">About Us</a></li>
-                    <li><a href="/register">Register</a></li>
-                    <li><a href="/application">Application</a></li>
+                    <li><a href="{% url 'Home'%}">Home</a></li>
+                    <li><a href="{% url 'About Us'%}">About Us</a></li>
+                    <li><a href="{% url 'Login'%}">Login</a></li>
+                    <li><a href="{% url 'Sponsors' %}">Sponsors</a></li>
                 </ul>
             </div>
             <div class="content">

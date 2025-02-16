@@ -3,7 +3,7 @@ from .utils import getclasses
 from django.views.generic.base import ContextMixin
 
 def get_title(defaultName: str) -> str:
-    return "hackACI - " + defaultName
+    return "hAckCI - " + defaultName
 
 def get_class_list(moduleName: str, appendList: List) -> List:
     classes = getclasses.return_classes(moduleName)
