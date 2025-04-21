@@ -10,20 +10,21 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from pathlib import Path
-from dotenv import load_dotenv, find_dotenv
-from django.core.management.utils import get_random_secret_key
-import os
 import logging
+import os
+from pathlib import Path
 
-#load the variables from the .env file 
+from django.core.management.utils import get_random_secret_key
+from dotenv import find_dotenv, load_dotenv
+
+# load the variables from the .env file
 load_dotenv(find_dotenv())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -31,7 +32,7 @@ MEDIA_URL = '/media/'
 # SECURITY WARNING: keep the secret key used in production secret!
 secretKeyEnv = os.getenv("SECRET_KEY")
 if secretKeyEnv:
-    SECRET_KEY = secretKeyEnv 
+    SECRET_KEY = secretKeyEnv
 else:
     SECRET_KEY = get_random_secret_key()
 
@@ -70,16 +71,15 @@ if not DEBUG and ALLOWED_HOSTS == "*":
 # Application definition
 
 INSTALLED_APPS = [
-    'src',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'markdownify',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "src",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 ]
 
 # expires on browser close
@@ -89,38 +89,38 @@ SESSION_COOKIE_AGE = 3600
 # httpOnly and Secure cookies, no CSRF
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = "Lax"
 
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'hackACI.urls'
+ROOT_URLCONF = "hackACI.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'hackACI.wsgi.application'
+WSGI_APPLICATION = "hackACI.wsgi.application"
 
 
 # Database
@@ -128,20 +128,20 @@ WSGI_APPLICATION = 'hackACI.wsgi.application'
 
 if os.getenv("ENABLE_POSTGRESQL", "False").lower() == "true":
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': BASE_DIR / os.getenv("DB_NAME", "mydb"),
-            'USER': os.getenv("DB_USER", 'myuser'),
-            'PASSWORD': os.getenv("DB_PASSWORD", 'mypassword'),
-            'HOST': os.getenv("DB_HOST", 'localhost'),
-            'PORT': os.getenv("DB_PORT",'5432'),
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": BASE_DIR / os.getenv("DB_NAME", "mydb"),
+            "USER": os.getenv("DB_USER", "myuser"),
+            "PASSWORD": os.getenv("DB_PASSWORD", "mypassword"),
+            "HOST": os.getenv("DB_HOST", "localhost"),
+            "PORT": os.getenv("DB_PORT", "5432"),
         }
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / "db.sqlite3",
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
         }
     }
 
@@ -151,16 +151,16 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -168,9 +168,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -180,27 +180,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-#uncomment this in prod
-# STATIC_ROOT = os.path.join(BASE_DIR, "static") 
+# uncomment this in prod
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static/')
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Configuration to make Markdownify Run.
-MARKDOWNIFY = {
-    "default": {
-        "WHITELIST_TAGS": [
-            'a', 'p', 'b', 'i', 'em', 'strong', 'ul', 'li', 'ol', 'code', 'pre',
-            'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'br'
-        ],
-        "WHITELIST_ATTRS": ['href', 'src', 'alt'],
-        "WHITELIST_PROTOCOLS": ['http', 'https'],
-    }
-}
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
